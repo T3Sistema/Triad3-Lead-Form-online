@@ -28,6 +28,16 @@ const App = () => {
     const chatWindowRef = useRef(null);
 
     useEffect(() => {
+        // Fix for mobile keyboard covering the viewport
+        const handleResize = () => {
+            document.documentElement.style.setProperty('--visual-viewport-height', `${window.innerHeight}px`);
+        };
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
         setIsTyping(true);
         setTimeout(() => {
             if (messages.length === 0) {
@@ -95,7 +105,7 @@ const App = () => {
         setCurrentInput(formData[keyToEdit]);
         const editMessage = { sender: 'bot', text: `Claro, vamos corrigir o "${questions[stepIndex].label}". Qual é o valor correto?` };
         
-        const newMessages = messages.filter(m => m.text !== 'Perfeito! Por favor, confirme se os dados estão corretos:');
+        const newMessages = messages.filter(m => m.text !== 'Perfeito! Por favor, confirme se os dados estão corretetos:');
         newMessages.push(editMessage)
         setMessages(newMessages);
     };

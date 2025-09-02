@@ -9,6 +9,7 @@
   --text-secondary: #8696a0;
   --input-bg: #202c33;
   --input-border: #2f3b44;
+  --visual-viewport-height: 100dvh; /* Fallback for mobile keyboard */
 }
 
 * {
@@ -18,7 +19,7 @@
 }
 
 html, body, #root {
-  height: 100dvh;
+  height: var(--visual-viewport-height);
   width: 100%;
   overflow: hidden;
 }
