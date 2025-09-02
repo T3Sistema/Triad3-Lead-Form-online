@@ -31,6 +31,13 @@ const App = () => {
         // Fix for mobile keyboard covering the viewport
         const handleResize = () => {
             document.documentElement.style.setProperty('--visual-viewport-height', `${window.innerHeight}px`);
+            // When the viewport resizes (e.g., keyboard appears), scroll to the bottom of the chat.
+            // A small delay ensures the layout has been updated before scrolling.
+            setTimeout(() => {
+                if (chatWindowRef.current) {
+                    chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+                }
+            }, 100);
         };
         window.addEventListener('resize', handleResize);
         handleResize();
