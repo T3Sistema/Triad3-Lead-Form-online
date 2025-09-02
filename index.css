@@ -93,6 +93,7 @@ body {
   background-image: url('https://aisfizoyfpcisykarrnt.supabase.co/storage/v1/object/public/prospectaigestor/Screenshot%202025-09-02%20120340.png');
   background-size: cover;
   background-position: center;
+  scroll-padding-bottom: 60px; /* Leaves space for the input area, preventing the last message from being hidden */
 }
 
 .message {

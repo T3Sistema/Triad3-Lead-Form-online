@@ -28,22 +28,13 @@ const App = () => {
     const chatWindowRef = useRef(null);
 
     useEffect(() => {
-        // When the viewport resizes (e.g., keyboard appears), scroll the last message into view.
+        // When the viewport resizes (e.g., keyboard appears), scroll to the bottom.
         const handleResize = () => {
             setTimeout(() => {
                 if (chatWindowRef.current) {
-                    const chatWindow = chatWindowRef.current;
-                    // Query all elements that can appear as the last item in the chat.
-                    const messageElements = chatWindow.querySelectorAll('.message, .summary-card, .typing-indicator');
-                    // Get the very last element.
-                    const lastElement = messageElements[messageElements.length - 1];
-
-                    if (lastElement) {
-                        // Scroll the last element into view instantly, aligning its bottom
-                        // with the bottom of the chat window. This ensures it's visible
-                        // above the keyboard.
-                        lastElement.scrollIntoView({ behavior: 'auto', block: 'end' });
-                    }
+                    // Scroll to the very bottom of the chat. The `scroll-padding-bottom`
+                    // in the CSS ensures the last message isn't obscured by the input area.
+                    chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
                 }
             }, 100); // A small delay allows the UI to reflow after the resize event.
         };
