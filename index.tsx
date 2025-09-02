@@ -28,10 +28,8 @@ const App = () => {
     const chatWindowRef = useRef(null);
 
     useEffect(() => {
-        // Fix for mobile keyboard covering the viewport
+        // When the viewport resizes (e.g., keyboard appears), scroll to the bottom of the chat.
         const handleResize = () => {
-            document.documentElement.style.setProperty('--visual-viewport-height', `${window.innerHeight}px`);
-            // When the viewport resizes (e.g., keyboard appears), scroll to the bottom of the chat.
             // A small delay ensures the layout has been updated before scrolling.
             setTimeout(() => {
                 if (chatWindowRef.current) {
