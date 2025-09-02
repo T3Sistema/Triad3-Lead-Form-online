@@ -6,9 +6,9 @@ const WEBHOOK_URL = 'https://webhook.triad3.io/webhook/colet-dados-2025';
 
 const questions = [
     { key: 'storeName', prompt: 'Olá! Para começarmos, qual é o nome da sua loja?', label: 'Nome da Loja' },
-    { key: 'contactName', prompt: 'Ótimo! E qual é o nome do responsável que receberá os leads?', label: 'Nome do Responsável' },
-    { key: 'phone', prompt: 'Número de telefone do RESPONSÁVEL PELOS LEADS', label: 'Número de telefone do RESPONSÁVEL PELOS LEADS', type: 'tel' },
-    { key: 'email', prompt: 'E-mail do RESPONSÁVEL PELOS PELOS LEADS', label: 'E-mail do RESPONSÁVEL PELOS PELOS LEADS', type: 'email' },
+    { key: 'contactName', prompt: 'Qual o nome do responsável que RECEBERÁ OS LEADS?', label: 'Nome do Responsável' },
+    { key: 'phone', prompt: 'Número de telefone do RESPONSÁVEL PELOS LEADS?', label: 'Número de telefone do RESPONSÁVEL PELOS LEADS?', type: 'tel' },
+    { key: 'email', prompt: 'E-mail do RESPONSÁVEL PELOS PELOS LEADS?', label: 'E-mail do RESPONSÁVEL PELOS PELOS LEADS?', type: 'email' },
 ];
 
 const App = () => {
@@ -112,7 +112,7 @@ const App = () => {
         setCurrentInput(formData[keyToEdit]);
         const editMessage = { sender: 'bot', text: `Claro, vamos corrigir o "${questions[stepIndex].label}". Qual é o valor correto?` };
         
-        const newMessages = messages.filter(m => m.text !== 'Perfeito! Por favor, confirme se os dados estão corretetos:');
+        const newMessages = messages.filter(m => m.text !== 'Perfeito! Por favor, confirme se os dados estão corretos:');
         newMessages.push(editMessage)
         setMessages(newMessages);
     };

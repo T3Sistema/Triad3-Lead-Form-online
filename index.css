@@ -175,7 +175,7 @@ body {
   border: 1px solid var(--input-border);
   background-color: #2a3942;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: 16px;
   outline: none;
   transition: border-color 0.3s;
 }
